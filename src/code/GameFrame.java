@@ -27,11 +27,12 @@ public class GameFrame extends Frame{  //要继承系统中默认的Frame
 	public void update(Graphics graphics) {
 		if (offScreenImage  == null) {
 			offScreenImage = this.createImage(Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
+		}
 			Graphics gOff = offScreenImage.getGraphics();
 			paint(gOff);
 			graphics.drawImage(offScreenImage, 0, 0, null);
-		}
 	}
+	
 	
 
 	
@@ -42,8 +43,8 @@ public class GameFrame extends Frame{  //要继承系统中默认的Frame
 	
 	plane plane  = new plane(planeImg,250,250);
 	//Shell shell =  new Shell();
-	//建立50个炮弹
-	Shell[] shells = new Shell[50];
+	//建立30个炮弹
+	Shell[] shells = new Shell[30];
 	
 	Explode baozha; //声明爆炸对象
 	
@@ -77,22 +78,30 @@ public class GameFrame extends Frame{  //要继承系统中默认的Frame
 			
 			//计时功能与显示
 			if(!plane.live) {
-				if(endTime==null){
-					endTime = new Date();
-	            }
-				period = (int)((endTime.getTime() - startTime.getTime())/1000); //因为是毫秒数
-				printInfo(g, "时间："+period+"秒", 50, 120, 260, Color.white);
+			   period = (int)((endTime.getTime() - startTime.getTime())/1000); //因为是毫秒数
+			   printInfo(g, "时间："+period+"秒", 50, 120, 260, Color.white);	
+			   
+			   for(int i = 0; i < shells.length; i++) {
+				   shells[i].stop();
+			   }
 	      }
-  }		
+			
+			
+			
+		
+  }	
+	
 	
 	public void printInfo(Graphics g,String str,int size,int x,int y,Color color){
-	        Color c = g.getColor();
-	        g.setColor(color);
-	        Font f = new Font("宋体",Font.BOLD,size);
-	        g.setFont(f);
-	        g.drawString(str,x,y);
-	        g.setColor(c);
-	    }  
+        Color c = g.getColor();
+        g.setColor(color);
+        Font f = new Font("宋体",Font.BOLD,size);
+        g.setFont(f);
+        g.drawString(str,x,y);
+        g.setColor(c);
+    }  
+	
+	
 	
 	//帮助我们反复的重画窗口
 	//使用内部类：内部类可以直接使用外部类的所有属性和方法

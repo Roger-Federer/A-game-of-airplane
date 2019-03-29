@@ -24,7 +24,7 @@ public class Shell extends GameObject{
 		
 		width = 10;
 		height = 10;
-		speed = 5;
+		speed = 2;
 		degree = Math.random()*Math.PI*2;
 		
 	} 
@@ -52,6 +52,13 @@ public class Shell extends GameObject{
 		
 		
 		graphics.setColor(color); //将之前保存的颜色和字体恢复
+	}
+	
+	//子弹停止发散。找个点随便放
+	public void stop() {
+		this.x = -200;
+		this.y = -200;
+		
 	}
 
 }
