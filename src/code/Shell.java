@@ -5,9 +5,8 @@ package code;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.time.Year;
 
-import javax.security.auth.x500.X500Principal;
+
 
 /**
  * class detail:子弹类：这里默认以一个黄色的实心小球替代
@@ -46,7 +45,7 @@ public class Shell extends GameObject{
 		//子弹碰到边界返回
 		if (x < 0 || x > Constant.GAME_WIDTH - width) {
 			degree = Math.PI - degree;
-		}
+		} 
 		if (y < 30 || y > Constant.GAME_HEIGHT - height) {
 			degree = -degree;
 		}

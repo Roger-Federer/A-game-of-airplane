@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
+import javax.imageio.ImageTypeSpecifier;
+
 /**
  * class detail:定义飞机类
  * @author GJXAIOU
@@ -16,25 +18,39 @@ public class plane extends GameObject {
 	int speed = 3;
 	boolean up,down,left,right;  //定义上下左右方向
 
+	//判断飞机死了还是活着
+	boolean live = true;
+	
+	
 	public void drawSelf(Graphics graphics) {
-		graphics.drawImage(image, (int)x, (int)y, null);
-		
-		//根据按键的方向实现飞机的移动
-		if (left) {
-			x -= speed;			
-		} else if (right) {
-			x += speed;
-		} else if (up) {
-			y -= speed;
-		}else if (down) {
-			y += speed;
+		if(live){
+			graphics.drawImage(image, (int)x, (int)y, null);
+			
+			//根据按键的方向实现飞机的移动
+			if (left) {
+				x -= speed;			
+			} else if (right) {
+				x += speed;
+			} else if (up) {
+				y -= speed;
+			}else if (down) {
+				y += speed;
+			}
+			
 		}
-		
 	}
+	
+	
+	
 	public plane (Image image,double x, double y) {
 		this.image = image;
 		this.x = x;
 		this.y = y;
+		
+		//设定飞机的长度和宽度
+		this.speed = 3;
+		this.width = image.getWidth(null);
+		this.height = image.getHeight(null);
 		
 	}
 	
